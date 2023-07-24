@@ -17,6 +17,7 @@ import java.util.List;
 @Getter
 @Entity
 public class User implements UserDetails {
+    //UserDetails를 상속받아 인증 객체로 사용
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,38 +37,43 @@ public class User implements UserDetails {
     }
 
 
-    @Override
+    @Override //권한 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("user"));
     }
 
-    @Override
+    @Override //사용자의 id를 반환
     public String getUsername() {
         return email;
     }
 
-    @Override
+    @Override //사용자의 패스워드를 반화
     public String getPassword() {
         return password;
     }
 
-    @Override
+    @Override //계정 만료 여부 반환
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @Override
+    @Override //계정 잠금 여부 반환
     public boolean isAccountNonLocked() {
-        return true;
+        //계정 잠금되었는지 확인하는 로직
+        return true; // true -> 잠금되지 않았음
     }
 
+    //패스워드의 만료 여부 반환
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        //패스워드가 만료되었는지 확인하는 로직
+        return true; // true -> 만료되지 않았음
     }
 
+    //계정 사용 가능 여부 반환
     @Override
     public boolean isEnabled() {
-        return true;
+        //계정이 사용 가능한지 확인하는 로직
+        return true; // true -> 사용 가능
     }
 }
