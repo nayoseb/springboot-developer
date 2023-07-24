@@ -40,10 +40,11 @@ public class BlogViewController {
 
 
     @GetMapping("/new-article")
+    //id 키를 가진 쿼리 파라미터의 값을 id 변수에 매칭(id는 없을 수도 있음)
     public String newArticle(@RequestParam(required = false) Long id, Model model) {
-        if (id == null) {
+        if (id == null) { //id가 없으면 생성
             model.addAttribute("article", new ArticleViewResponse());
-        } else {
+        } else { //id가 있으면 수정
             Article article = blogService.findById(id);
             model.addAttribute("article", new ArticleViewResponse(article));
         }

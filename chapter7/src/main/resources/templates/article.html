@@ -26,6 +26,7 @@
           <button type="button" id="modify-btn"
                   th:onclick="|location.href='@{/new-article?id={articleId}(articleId=${article.id})}'|"
                   class="btn btn-primary btn-sm">수정</button>
+          <!--[삭제] 버튼에 id 추가-->
           <button type="button" id="delete-btn"
                   class="btn btn-secondary btn-sm">삭제</button>
         </article>
@@ -33,5 +34,5 @@
     </div>
   </div>
 
-  <script src="/js/article.js"></script>
+  <script src="/js/article.js"></script> <!--article.js 파일 추가-->
 </body>

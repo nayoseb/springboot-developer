@@ -15,9 +15,11 @@ if (deleteButton) {
 }
 
 // 수정 기능
+//id가 modify-btn인 엘리먼트 조회
 const modifyButton = document.getElementById('modify-btn');
 
 if (modifyButton) {
+//클릭이벤트가 감지되면 수정 APi 요청
     modifyButton.addEventListener('click', event => {
         let params = new URLSearchParams(location.search);
         let id = params.get('id');
@@ -39,10 +41,11 @@ if (modifyButton) {
     });
 }
 
-// 생성 기능
+// 등록 기능
 const createButton = document.getElementById('create-btn');
-
+// id가 create-btn인 엘리먼트
 if (createButton) {
+//클릭 이번트가 감지되면 생성 API 요청
     createButton.addEventListener('click', event => {
         fetch('/api/articles', {
             method: 'POST',
