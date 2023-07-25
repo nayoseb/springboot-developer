@@ -23,6 +23,7 @@ public class JwtFactory {
 
     private Map<String, Object> claims = emptyMap();
 
+    //빌더 패턴을 사용해 설정이 필요한 데이터만 선택 설정
     @Builder
     public JwtFactory(String subject, Date issuedAt, Date expiration,
                       Map<String, Object> claims) {
@@ -36,6 +37,7 @@ public class JwtFactory {
         return JwtFactory.builder().build();
     }
 
+    //jjwt 라이브러리를 사용해 JWT 토큰 생성
     public String createToken(JwtProperties jwtProperties) {
         return Jwts.builder()
                 .setSubject(subject)
