@@ -32,6 +32,8 @@ public class User implements UserDetails {
     @Column(name = "nickname", unique = true)
     private String nickname;
 
+
+    //생성자에 nickname 추가
     @Builder
     public User(String email, String password, String nickname) {
         this.email = email;
@@ -39,6 +41,7 @@ public class User implements UserDetails {
         this.nickname = nickname;
     }
 
+    //사용자 이름 변경
     public User update(String nickname) {
         this.nickname = nickname;
 
